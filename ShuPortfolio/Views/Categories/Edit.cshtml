@@ -1,0 +1,33 @@
+﻿@model ShuPortfolio.Models.CategoryViewModel
+
+<div class="container">
+    <div class="col-sm-1 col-md-4 col-md-offset-4">
+        <div class="thumbnail">
+            <h1>Edit</h1>
+            <h2>@Model.Name</h2>
+            <img src="~/img/Categories/@Model.Image" />
+            <p>@Model.Description</p>
+            <div class="container-fluid">
+                <form asp-controller="Categories" asp-action="Edit" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label><br />
+                        <input asp-for="Name" type="text" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label><br />
+                        <textarea asp-for="Description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="File"></label><br />
+                        <input asp-for="File" type="file" />
+                        <span asp-validation-for="File" class="text-danger"></span>
+                    </div>
+                    <input type="submit" value="Edit" class="btn btn-success" />
+                    <a asp-controller="Categories" asp-action="Index">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

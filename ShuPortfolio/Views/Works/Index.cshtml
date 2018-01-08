@@ -1,0 +1,32 @@
+﻿@model IList<Work>
+
+<a asp-controller="Works" asp-action="Index" asp-route-id="">All works</a>
+@if (User.Identity.IsAuthenticated)
+{
+    <a asp-controller="Works" asp-action="Create">Add work</a>
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var wokr in Model)
+        {
+            <div class="col-xs-12 col-md-4" >
+                <div class="">
+                    <a href="#">
+                        <h1>@wokr.Name</h1>
+                        <img class="my_img container" src="~/img/Categories/@wokr.Image" />
+                        <p>@wokr.Description</p>
+                        <p>@wokr.DataCreated</p>
+                    </a>
+                    @if (User.Identity.IsAuthenticated)
+                {
+                        <a asp-controller="Works" asp-action="Edit">Edit</a>
+                        <a asp-controller="Works" asp-action="Delete">Delete</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
